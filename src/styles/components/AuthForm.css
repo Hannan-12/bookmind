@@ -1,0 +1,225 @@
+.form-container {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.form-header {
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--text-color);
+}
+.form-header h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.form-header p {
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-color);
+}
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 15px;
+  box-sizing: border-box;
+}
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb, 109, 90, 205), 0.2);
+}
+
+.social-login {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+.social-btn:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.divider {
+  text-align: center;
+  margin: 25px 0;
+  color: var(--text-color);
+  opacity: 0.6;
+  font-size: 13px;
+  position: relative;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 35%;
+  height: 1px;
+  background-color: var(--border-color);
+  transform: translateY(-50%);
+}
+.divider::before { left: 0; }
+.divider::after { right: 0; }
+
+.forgot-password {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.forgot-password-link,
+.link-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-family: inherit;
+}
+.forgot-password-link:hover,
+.link-button:hover {
+  text-decoration: underline;
+}
+
+.toggle-form {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+.toggle-form span {
+  margin-right: 5px;
+}
+
+.alert {
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+}
+.alert.success {
+  background-color: var(--success-color);
+}
+.alert.error {
+  background-color: var(--error-color);
+}
+
+.btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.btn:hover {
+  background-color: var(--primary-hover);
+}
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.overlay > form {
+  background-color: var(--panel-bg);
+  padding: 35px 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  max-width: 450px;
+  width: 100%;
+  position: relative;
+  margin: auto;
+  flex: none;
+  box-sizing: border-box;
+}
+
+.overlay .form-header h1 {
+  font-size: 26px;
+}
+.overlay .form-header p {
+  font-size: 14px;
+}
+
+
+
+.close-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--text-color);
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 5px;
+  line-height: 1;
+  z-index: 101;
+  transition: opacity 0.2s ease;
+}
+.close-overlay:hover {
+  opacity: 1;
+}
+
+:root {
+  --primary-color-rgb: 109, 90, 205;
+}
+body.dark-theme {
+  --primary-color-rgb: 139, 109, 255;
+}

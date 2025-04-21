@@ -1,0 +1,40 @@
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    background: var(--panel-bg);
+    border-radius: 50px;
+    padding: 5px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    display: flex;
+    align-items: center;
+  }
+  
+  .theme-toggle button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 5px 10px;
+    color: var(--text-color);
+  }
+  
+  .theme-toggle button.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50px;
+  }
+  
+  @media (max-width: 480px) {
+    .theme-toggle {
+      top: 10px;
+      right: 10px;
+      padding: 3px;
+    }
+    
+    .theme-toggle button {
+      font-size: 20px;
+      padding: 4px 8px;
+    }
+  }

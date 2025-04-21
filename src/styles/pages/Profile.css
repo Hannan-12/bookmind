@@ -1,0 +1,121 @@
+.profile-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: var(--panel-bg);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px var(--shadow-color);
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  
+  .profile-header {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  
+  .profile-avatar-container {
+    margin-bottom: 15px;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 3px solid var(--panel-bg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  
+  .avatar-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0 0 50% 50%;
+  }
+  
+  .profile-avatar-container:hover .avatar-overlay {
+    opacity: 1;
+  }
+  
+  h1#profileName {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  
+  .profile-details {
+    margin-top: 20px;
+  }
+  
+  .profile-details .form-group {
+    margin-bottom: 20px;
+  }
+  
+  
+  .profile-details .form-group input[name="email"][readOnly] {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .profile-details .form-group select[multiple] {
+    min-height: 120px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .profile-details .form-group select[multiple]:focus {
+     outline: none;
+     border-color: var(--primary-color);
+     box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb, 109, 90, 205), 0.2);
+  }
+  
+  .form-actions {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .form-actions .btn {
+    min-width: 150px;
+    width: auto;
+    padding: 10px 30px;
+  }
+  
+  .profile-details .alert.success {
+    margin-bottom: 20px;
+    text-align: center;
+  }

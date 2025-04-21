@@ -1,0 +1,110 @@
+/* Inherits styles from homepage.css */
+
+/* Add specific styles for the Contact Us page content */
+.contact-container {
+    padding: 30px;
+    background-color: var(--panel-bg); /* Optional */
+    border-radius: 10px; /* Optional */
+    box-shadow: 0 3px 10px var(--shadow-color); /* Optional */
+    max-width: 900px; /* Limit width */
+    margin: 40px auto; /* Center */
+}
+
+.contact-container h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 15px;
+}
+.contact-container > p { /* Style the intro paragraph */
+    text-align: center;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.contact-methods {
+    display: flex;
+    gap: 40px; /* Space between form and info */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.contact-form-section {
+    flex: 2; /* Make form take more space */
+    min-width: 300px; /* Minimum width before wrapping */
+}
+
+.contact-info-section {
+    flex: 1; /* Make info take less space */
+    min-width: 250px;
+}
+
+.contact-form-section h2, .contact-info-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+/* Form Styles (similar to profile page) */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px; /* Slightly larger padding */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-color); /* Use background color for inputs */
+    color: var(--text-color);
+    font-size: 1em;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+     outline: none;
+     border-color: var(--primary-color);
+     box-shadow: 0 0 0 2px rgba(109, 90, 205, 0.2); /* Optional focus ring */
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btn { /* Inherited, but ensure it's styled correctly */
+    display: inline-block; /* Allow centering if needed */
+    padding: 12px 25px;
+}
+
+.form-status {
+    margin-top: 15px;
+    font-weight: 500;
+    display: none; /* Hidden initially */
+}
+
+.contact-info-section p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+.contact-info-section a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.contact-info-section a:hover {
+     text-decoration: underline;
+}
+
+/* Responsive adjustments for contact layout */
+@media (max-width: 768px) {
+    .contact-methods {
+        flex-direction: column; /* Stack form and info */
+        gap: 30px;
+    }
+}

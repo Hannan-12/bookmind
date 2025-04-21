@@ -1,0 +1,675 @@
+/* Keep all your existing :root and body.dark-theme variables */
+:root {
+    --primary-color: #6d5acd;
+    --primary-hover: #5646b5;
+    --secondary-color: #94c2fd;
+    --text-color: #333;
+    --bg-color: #f5f8ff;
+    --panel-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --border-color: #e1e5ee;
+    --success-color: #4CAF50;
+    --error-color: #f44336;
+    --card-bg: #ffffff;
+    --book-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme {
+    --primary-color: #8b6dff;
+    --primary-hover: #9d84ff;
+    --secondary-color: #4a4e82;
+    --text-color: #e1e5ee;
+    --bg-color: #121212;
+    --panel-bg: #1e1e2e;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --border-color: #2c2c3a;
+    --card-bg: #252538;
+    --book-shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* Keep all your existing base styles (*, body, header, nav, etc.) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    padding-bottom: 40px; /* Adjust if footer overlaps */
+    position: relative; /* Context for potential absolute elements */
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 101; /* Ensure above header */
+    background: var(--panel-bg);
+    border-radius: 50px;
+    padding: 5px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 5px 10px;
+    color: var(--text-color);
+}
+
+.theme-toggle button.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50px;
+}
+
+header {
+    background-color: var(--panel-bg);
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 100; /* Below theme toggle */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.logo-icon {
+    margin-right: 10px;
+    font-size: 28px;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+}
+
+.menu li {
+    margin-left: 30px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.menu li a:hover, .menu li a.active {
+    color: var(--primary-color);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    cursor: pointer;
+    position: relative;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%; /* Position below profile */
+    right: 0;
+    margin-top: 5px; /* Small gap */
+    background-color: var(--panel-bg);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    width: 200px;
+    display: none;
+    overflow: hidden;
+    z-index: 101; /* Above header content */
+}
+
+.dropdown.active {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 15px;
+    text-decoration: none;
+    display: block;
+    color: var(--text-color);
+    transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark-theme .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dropdown-item.logout {
+    color: var(--error-color);
+    border-top: 1px solid var(--border-color);
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 60px 20px; /* Slightly less padding than homepage */
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 42px; /* Slightly smaller */
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Search Bar (Identical to homepage.css initially) */
+.search-bar {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: 50px;
+    border: none;
+    font-size: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #333;
+}
+.dark-theme .search-bar input {
+    background-color: var(--panel-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.search-bar button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    height: calc(100% - 10px);
+    padding: 0 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Main Content Area */
+.main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Category Navigation */
+.category-nav {
+    margin-bottom: 30px;
+    overflow-x: auto; /* Allow horizontal scroll on small screens */
+    white-space: nowrap; /* Prevent wrapping */
+    padding-bottom: 10px; /* Space for scrollbar */
+     /* Simple scrollbar styling (optional) */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--bg-color);
+}
+.category-nav::-webkit-scrollbar {
+    height: 5px;
+}
+.category-nav::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+.category-nav::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
+
+.category-list {
+    display: inline-flex; /* Use inline-flex for nowrap scrolling */
+    list-style: none;
+    padding: 5px 0;
+    margin: 0; /* Reset margin */
+}
+
+.category-list li {
+    margin-right: 15px; /* Spacing between items */
+}
+.category-list li:last-child {
+    margin-right: 0;
+}
+
+.category-link {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 8px 18px; /* Adjust padding */
+    border: 1px solid var(--border-color); /* Add border */
+    border-radius: 20px; /* Pill shape */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-weight: 500;
+    display: block; /* Ensure padding works */
+}
+
+.category-link:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: white;
+}
+.category-link.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+
+/* Book Grid and Cards (reuse from homepage.css if identical) */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px; /* Space before footer */
+}
+
+.book-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--book-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--book-shadow);
+}
+
+.book-cover {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.book-rating {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.book-rating span {
+    margin-left: 5px;
+}
+
+.book-details {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.book-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.8em;
+}
+
+.book-author {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-genre {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--panel-bg);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: auto;
+    align-self: flex-start;
+}
+.dark-theme .book-genre {
+    color: #ffffff;
+}
+
+.read-button { /* Reusing class, ensure it exists in card HTML */
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 12px;
+    text-align: center;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+}
+.read-button:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Footer (reuse from homepage.css if identical) */
+footer {
+    background-color: var(--panel-bg);
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 -2px 10px var(--shadow-color);
+    width: 100%;
+    margin-top: 40px;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links li {
+    margin: 5px 15px;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.copyright {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* Loading/Error Messages (reuse from homepage.css) */
+.loading-message, .error-message, .no-results-message {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    opacity: 0.8;
+    color: var(--text-color);
+    grid-column: 1 / -1; /* Make message span full grid width */
+}
+
+.error-message {
+    color: var(--error-color);
+}
+
+
+/* --- Autocomplete Styles (Copied from homepage.css) --- */
+.autocomplete-list {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    z-index: 100;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+}
+
+.autocomplete-list.active {
+    display: block;
+}
+
+.autocomplete-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.autocomplete-item:last-child {
+    border-bottom: none;
+}
+
+body:not(.dark-theme) .autocomplete-item:hover {
+    background-color: #f0f0f0;
+}
+
+body.dark-theme .autocomplete-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.suggestion-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.suggestion-title {
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: left;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.suggestion-author {
+    font-size: 0.9em;
+    color: var(--text-color);
+    opacity: 0.8;
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+/* --- End Autocomplete Styles --- */
+
+
+/* Responsive design (Adjust based on homepage.css and category specifics) */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+    .menu {
+        display: none; /* Keep hidden */
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        right: 0;
+        background-color: var(--panel-bg);
+        flex-direction: column;
+        padding: 10px 0;
+        margin: 0;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        z-index: 99;
+    }
+    .menu.active {
+        display: flex;
+    }
+    .menu li {
+        margin: 0;
+        width: 100%;
+    }
+    .menu li a {
+        padding: 12px 20px;
+        display: block;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .menu li:last-child a {
+        border-bottom: none;
+    }
+    .mobile-toggle {
+        display: block;
+        order: 3;
+    }
+    .user-profile {
+        margin-left: auto;
+        margin-right: 15px;
+    }
+    .navbar {
+        flex-wrap: wrap;
+    }
+    .logo {
+        order: 1;
+    }
+    .hero h1 {
+        font-size: 32px;
+    }
+    .hero p {
+        font-size: 16px;
+    }
+    .search-bar {
+        flex-wrap: wrap;
+    }
+    .search-bar input {
+        margin-bottom: 10px;
+    }
+    .search-bar button {
+        position: static; /* Button below input */
+        width: 100%; /* Full width */
+        margin-left: 0;
+        padding: 12px 20px;
+    }
+    .autocomplete-list {
+        position: static; /* Below input */
+        width: 100%;
+        margin-top: 5px;
+        box-shadow: none;
+    }
+    .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    .book-cover {
+        height: 200px;
+    }
+    .footer-links li {
+        margin: 8px 10px;
+    }
+} 
+
+@media (max-width: 480px) {
+    .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 10px;
+    }
+    .book-cover {
+        height: 180px;
+    }
+    .book-title { font-size: 14px; }
+    .book-author { font-size: 12px; }
+    .book-genre { font-size: 10px; padding: 2px 8px; }
+    .read-button { font-size: 11px; padding: 4px 8px; }
+    .hero h1 { font-size: 28px; }
+    .hero p { font-size: 14px; }
+
+    .theme-toggle { top: 10px; right: 10px; }
+    .theme-toggle button { font-size: 20px; }
+    .user-avatar { width: 35px; height: 35px; font-size: 16px; }
+    #username { display: none; }
+
+    .category-link { padding: 6px 12px; font-size: 14px;} /* Smaller category links */
+
+    .footer-links { flex-direction: column; align-items: center; }
+    .footer-links li { margin: 8px 0; }
+} 
