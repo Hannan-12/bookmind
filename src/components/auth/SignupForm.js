@@ -1,8 +1,8 @@
 // src/components/auth/SignupForm.js
 import React, { useState } from 'react';
 import { createUser } from '../../services/firebase';
-// *** FIXED IMPORT PATH ***
-import '../../styles/components/AuthForm.css'; // Use singular 'AuthForm.css'
+// Ensure correct import path for styles
+import '../../styles/components/AuthForm.css';
 
 const SignupForm = ({ onSuccess, onShowLogin }) => {
   const [name, setName] = useState('');
@@ -30,6 +30,9 @@ const SignupForm = ({ onSuccess, onShowLogin }) => {
     setSuccessMessage(''); // Clear previous success message
 
     try {
+      // NOTE: You might want to update the user's profile with the 'name' here
+      // using updateProfile from firebase/auth after user creation.
+      // For now, it just creates the user with email/password.
       await createUser(email, password);
       setSuccessMessage('Account created successfully! You can now log in.');
       setName('');
@@ -38,9 +41,14 @@ const SignupForm = ({ onSuccess, onShowLogin }) => {
       setConfirmPassword('');
       setTimeout(() => {
         if (onSuccess) {
-          onSuccess(); // Call onSuccess to potentially close the modal/switch view
+          // onSuccess might be used to close the modal or switch view
+          // In LoginPage, it's set to setShowSignup(false)
+          onSuccess();
         }
-      }, 2000);
+        // Optionally call onShowLogin directly if you want to switch
+        // to the login view immediately after success message.
+        // if (onShowLogin) onShowLogin();
+      }, 2000); // Show success message for 2 seconds
     } catch (error) {
       console.error('Signup error:', error);
       switch(error.code) {
@@ -65,26 +73,25 @@ const SignupForm = ({ onSuccess, onShowLogin }) => {
     }
   };
 
+  // This component renders the overlay div, which is then
+  // conditionally rendered by the parent (LoginPage)
   return (
-    // The main overlay div
     <div className="overlay" id="signup-form">
 
-      {/* The FORM element now acts as the modal content box */}
+      {/* The FORM element acts as the modal content box */}
       <form id="signup" onSubmit={handleSignup}>
         {/* Close button positioned relative to the form box */}
+        {/* Calls onShowLogin which should set showSignup to false in parent */}
         <span className="close-overlay" onClick={onShowLogin}>✕</span>
 
-        {/* Header is NOW INSIDE the form box */}
         <div className="form-header">
           <h1>Create Account</h1>
           <p>Join BookMind for personalized book recommendations</p>
         </div>
 
-        {/* Alerts are NOW INSIDE the form box */}
         {error && <div className="alert error">{error}</div>}
         {successMessage && <div className="alert success">{successMessage}</div>}
 
-        {/* Input groups remain inside the form */}
         <div className="input-group">
           <label htmlFor="signup-name">Full Name</label>
           <input
@@ -135,16 +142,15 @@ const SignupForm = ({ onSuccess, onShowLogin }) => {
 
         <button
           type="submit"
-          className="btn" // Removed id="submit" as it's not needed
+          className="btn"
           disabled={loading}
         >
           {loading ? 'Creating Account...' : 'Create Account'}
         </button>
 
-         {/* Toggle link is NOW INSIDE the form box */}
          <div className="toggle-form">
             <span>Already have an account? </span>
-            {/* Use button for accessibility */}
+            {/* Calls onShowLogin which should set showSignup to false in parent */}
             <button type="button" className="link-button" onClick={onShowLogin}>
               Sign In
             </button>
