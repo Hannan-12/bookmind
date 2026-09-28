@@ -17,7 +17,8 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       
-      // Store user info in localStorage for persistence
+      // Keep profile display data for convenience. Firebase remains the source
+      // of truth for authentication and route access.
       if (user) {
         localStorage.setItem('userEmail', user.email || '');
         // Use displayName from Google if available, otherwise use email prefix
@@ -30,18 +31,6 @@ export const AuthProvider = ({ children }) => {
 
     return unsubscribe;
   }, []);
-
-  // Check if we have user info in localStorage (for persistence)
-  useEffect(() => {
-    if (!currentUser) {
-      const email = localStorage.getItem('userEmail');
-      const username = localStorage.getItem('username');
-      
-      if (email && username) {
-        setCurrentUser({ email, displayName: username });
-      }
-    }
-  }, [currentUser]);
 
   const value = {
     currentUser,
